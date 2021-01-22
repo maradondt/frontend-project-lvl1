@@ -13,5 +13,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Eslint
-        run: make lint
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Set Node.js 12.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+
+    - name: install
+      run: make install
+
+    - name: Eslint
+      run: make lint
