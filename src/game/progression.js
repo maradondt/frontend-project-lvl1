@@ -9,7 +9,7 @@ export default class Prorgession {
     this.startPoint = getRandomNumber(0, 50);
     this.progressionLength = getRandomNumber(5, 20);
     this.prorgessionStep = getRandomNumber(2, 50);
-    this.missedPosition = getRandomNumber(0, this.progressionLength);
+    this.missedPosition = getRandomNumber(0, this.progressionLength - 1);
     this.numbers = (new Array(this.progressionLength)
       .fill(''))
       .map(() => {

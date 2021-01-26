@@ -2,7 +2,6 @@ import dialog from './cli.js';
 
 export default class Game {
   constructor(gameMod) {
-    // this.name;
     this.gameMod = gameMod;
     this.answers = [];
   }
@@ -14,7 +13,7 @@ export default class Game {
   greetings() {
     console.log('Welcome to Brain Games!');
     this.setName();
-    console.log(`Hello ${this.name}`);
+    console.log(`Hello, ${this.name}!`);
   }
 
   setAnswer() {
