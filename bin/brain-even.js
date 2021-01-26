@@ -1,4 +1,6 @@
 #!/usr/bin/env node
-import game from '../src/evenlogic.js';
+import Game from '../src/index.js';
+import Even from '../src/game/even.js';
 
-game();
+const game = new Game(new Even());
+game.start();

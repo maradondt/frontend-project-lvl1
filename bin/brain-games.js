@@ -1,4 +1,5 @@
 #!/usr/bin/env node
-import greetings from '../src/cli.js';
+import Game from '../src/index.js';
 
-greetings();
+const game = new Game();
+game.greetings();
