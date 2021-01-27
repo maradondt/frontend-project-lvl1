@@ -1,4 +1,4 @@
-import dialog from './cli.js';
+import { dialog } from './cli.js';
 
 export default class Game {
   constructor(gameMod) {

@@ -1,47 +1,45 @@
 import getRandomNumber from '../getRandomNumber.js';
 
-const sings = ['*', '+', '-'];
+const baseSings = ['*', '+', '-'];
+const description = 'What is the result of the expression?';
+const numbers = (new Array(3)
+  .fill(''))
+  .map(() => [getRandomNumber(0, 10), getRandomNumber(0, 50)]);
+const sings = baseSings.map(() => baseSings[getRandomNumber(0, baseSings.length - 1)]);
+const expressions = numbers
+  .map(([elem1, elem2], i) => `${elem1} ${sings[i]} ${elem2}`);
 
-export default class CalcGame {
-  constructor() {
-    this.description = 'What is the result of the expression?';
-    this.numbers = (new Array(3)
-      .fill(''))
-      .map(() => [getRandomNumber(0, 10), getRandomNumber(0, 50)]);
-    this.sings = sings.map(() => sings[getRandomNumber(0, sings.length - 1)]);
-    this.expressions = this.numbers
-      .map(([elem1, elem2], i) => `${elem1} ${this.sings[i]} ${elem2}`);
+const calcCorrectAnswer = (i) => {
+  switch (sings[i]) {
+    case '*':
+      return numbers[i][0] * numbers[i][1];
+    case '-':
+      return numbers[i][0] - numbers[i][1];
+    case '+':
+      return numbers[i][0] + numbers[i][1];
+    default:
+      console.log('Error');
+      return null;
   }
+};
 
+const calcGame = {
   sayDiscription() {
-    console.log(this.description);
-  }
+    console.log(description);
+  },
 
   askQuestion(index) {
-    console.log(`Question: ${this.expressions[index]}`);
-  }
-
-  calcCorrectAnswer(i) {
-    switch (this.sings[i]) {
-      case '*':
-        return this.numbers[i][0] * this.numbers[i][1];
-      case '-':
-        return this.numbers[i][0] - this.numbers[i][1];
-      case '+':
-        return this.numbers[i][0] + this.numbers[i][1];
-      default:
-        console.log('Error');
-        return null;
-    }
-  }
-  // eslint-disable-next-line class-methods-use-this
+    console.log(`Question: ${expressions[index]}`);
+  },
 
   compareAnswer(answer, index) {
-    const correct = this.calcCorrectAnswer(index);
+    const correct = calcCorrectAnswer(index);
     return +answer === correct;
-  }
+  },
 
   getCorrect(index) {
-    return this.calcCorrectAnswer(index);
-  }
-}
+    return calcCorrectAnswer(index);
+  },
+};
+
+export default calcGame;

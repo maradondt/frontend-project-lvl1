@@ -1,31 +1,26 @@
-import getRandomNumber from '../getRandomNumber.js';
+import { getRandomNumber, isEven } from '../cli.js';
 
-export default class EvenGame {
-  constructor() {
-    this.description = 'Answer "yes" if the number is even, otherwise answer "no".';
-    this.numbers = (new Array(3)
-      .fill(''))
-      .map(() => getRandomNumber());
-  }
+const description = 'Answer "yes" if the number is even, otherwise answer "no".';
+const numbers = new Array(3).fill('').map(() => getRandomNumber());
 
+const evenGame = {
   sayDiscription() {
-    console.log(this.description);
-  }
+    console.log(description);
+  },
 
   askQuestion(index) {
-    console.log(`Question: ${this.numbers[index]}`);
-  }
-
-  // eslint-disable-next-line class-methods-use-this
-  isEven(num) {
-    return num % 2 === 0;
-  }
+    console.log(`Question: ${numbers[index]}`);
+  },
 
   compareAnswer(answer, index) {
-    return (answer === 'yes' && this.isEven(this.numbers[index]) === true ? true : !!(answer === 'no' && this.isEven(this.numbers[index]) === false));
-  }
+    return answer === 'yes' && isEven(numbers[index]) === true
+      ? true
+      : !!(answer === 'no' && isEven(numbers[index]) === false);
+  },
 
   getCorrect(index) {
-    return this.isEven(this.numbers[index]) ? 'yes' : 'no';
-  }
-}
+    return isEven(numbers[index]) ? 'yes' : 'no';
+  },
+};
+
+export default evenGame;
