@@ -1,4 +1,4 @@
-import getRandomNumber from '../getRandomNumber.js';
+import { getRandomNumber } from '../cli.js';
 
 const baseSings = ['*', '+', '-'];
 const description = 'What is the result of the expression?';

@@ -1,27 +1,25 @@
-import getRandomNumber from '../getRandomNumber.js';
-import isPrime from '../isPrime.js';
+import { getRandomNumber, isPrime } from '../cli.js';
 
-export default class Prime {
-  constructor() {
-    this.description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-    this.numbers = (new Array(3)
-      .fill(''))
-      .map(() => getRandomNumber());
-  }
-
+const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+const numbers = (new Array(3)
+  .fill(''))
+  .map(() => getRandomNumber());
+const primeGame = {
   sayDiscription() {
-    console.log(this.description);
-  }
+    console.log(description);
+  },
 
   askQuestion(index) {
-    console.log(`Question: ${this.numbers[index]}`);
-  }
+    console.log(`Question: ${numbers[index]}`);
+  },
 
   compareAnswer(answer, index) {
-    return answer === this.getCorrect(index);
-  }
+    return answer === primeGame.getCorrect(index);
+  },
 
   getCorrect(index) {
-    return isPrime(this.numbers[index]) ? 'yes' : 'no';
-  }
-}
+    return isPrime(numbers[index]) ? 'yes' : 'no';
+  },
+};
+
+export default primeGame;

@@ -1,28 +1,28 @@
-import getRandomNumber from '../getRandomNumber.js';
-import gcd from '../gcd.js';
+import { getRandomNumber, gcd } from '../cli.js';
 
-export default class GcdGame {
-  constructor() {
-    this.description = 'Find the greatest common divisor of given numbers.';
-    this.numbers = (new Array(3)
-      .fill(''))
-      .map(() => [getRandomNumber(1, 100), getRandomNumber(1, 100)]);
-  }
+const description = 'Find the greatest common divisor of given numbers.';
+const numbers = (new Array(3)
+  .fill(''))
+  .map(() => [getRandomNumber(1, 100), getRandomNumber(1, 100)]);
+
+const gcdGame = {
 
   sayDiscription() {
-    console.log(this.description);
-  }
+    console.log(description);
+  },
 
   askQuestion(index) {
-    console.log(`Question: ${this.numbers[index].join(' ')}`);
-  }
+    console.log(`Question: ${numbers[index].join(' ')}`);
+  },
 
   compareAnswer(answer, index) {
-    const correct = gcd(...this.numbers[index]);
+    const correct = gcd(...numbers[index]);
     return +answer === correct;
-  }
+  },
 
   getCorrect(index) {
-    return gcd(...this.numbers[index]);
-  }
-}
+    return gcd(...numbers[index]);
+  },
+};
+
+export default gcdGame;
